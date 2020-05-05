@@ -26,12 +26,11 @@ public class PlantServiceTest {
         PlantService service = retrofit.create((PlantService.class));
 
         //when
-        PlantFeed feed = service.getPlant("southern red oak").execute().body();
+        PlantFeed.Species feed = service.getSpecies("southern red oak").execute().body().get(0);
 
         //then
         assertNotNull(feed);
 
-        String completeData;
         assertNotNull(feed.id);
         assertNotNull(feed.completeData);
     }
@@ -46,7 +45,7 @@ public class PlantServiceTest {
         PlantService service = retrofit.create((PlantService.class));
 
         //when
-        PlantFeed feed = service.getPlant("southern red oak").execute().body();
+        PlantFeed.Species feed = service.getSpecies("southern red oak").execute().body().get(0);
         PlantFeed feed2 = service.getPlantInfo(feed.id).execute().body();
 
         //then

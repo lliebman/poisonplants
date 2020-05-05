@@ -3,17 +3,24 @@ package liebman.plants;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlantFeed {
 
-    //feed returned from common_name call
+    //feed returned from getSpecies call
 
+   // List<Species> species;
+
+    class Species{
         String id;
         @SerializedName("complete_data")
         String completeData;
+    }
 
+    class SpeciesList extends ArrayList<Species> {
+    }
 
-    //feed returned from plant_id call
+    //feed returned from getPlantInfo
     @SerializedName("common_name")
     String commonName;
     Specifications specitifcation;

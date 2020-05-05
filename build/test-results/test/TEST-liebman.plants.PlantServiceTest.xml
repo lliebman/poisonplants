@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="liebman.plants.PlantServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-05-05T19:03:59" hostname="Dell-3000" time="3.485">
+<testsuite name="liebman.plants.PlantServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-05-05T21:39:38" hostname="Dell-3000" time="3.633">
   <properties/>
-  <testcase name="getPlant" classname="liebman.plants.PlantServiceTest" time="3.485">
-    <failure message="com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $" type="com.google.gson.JsonSyntaxException">com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:226)
-	at retrofit2.converter.gson.GsonResponseBodyConverter.convert(GsonResponseBodyConverter.java:39)
-	at retrofit2.converter.gson.GsonResponseBodyConverter.convert(GsonResponseBodyConverter.java:27)
-	at retrofit2.OkHttpCall.parseResponse(OkHttpCall.java:227)
-	at retrofit2.OkHttpCall.execute(OkHttpCall.java:190)
+  <testcase name="getPlant" classname="liebman.plants.PlantServiceTest" time="3.633">
+    <failure message="java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class liebman.plants.PlantFeed$SpeciesList (java.util.ArrayList is in module java.base of loader 'bootstrap'; liebman.plants.PlantFeed$SpeciesList is in unnamed module of loader 'app')" type="java.lang.ClassCastException">java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class liebman.plants.PlantFeed$SpeciesList (java.util.ArrayList is in module java.base of loader 'bootstrap'; liebman.plants.PlantFeed$SpeciesList is in unnamed module of loader 'app')
 	at liebman.plants.PlantServiceTest.getPlant(PlantServiceTest.java:29)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -56,10 +51,6 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $
-	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:386)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:215)
-	... 52 more
 </failure>
   </testcase>
   <system-out><![CDATA[]]></system-out>
