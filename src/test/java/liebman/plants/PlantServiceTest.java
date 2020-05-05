@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 public class PlantServiceTest {
 
     @Test
-    public void getPlant() throws IOException {
+    public void getSpecies() throws IOException {
         //given
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://trefle.io/")

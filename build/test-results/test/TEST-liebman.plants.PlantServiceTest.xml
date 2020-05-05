@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="liebman.plants.PlantServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-05-05T21:39:38" hostname="Dell-3000" time="3.633">
+<testsuite name="liebman.plants.PlantServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-05-05T21:56:39" hostname="Dell-3000" time="3.069">
   <properties/>
-  <testcase name="getPlant" classname="liebman.plants.PlantServiceTest" time="3.633">
+  <testcase name="getSpecies" classname="liebman.plants.PlantServiceTest" time="3.069">
     <failure message="java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class liebman.plants.PlantFeed$SpeciesList (java.util.ArrayList is in module java.base of loader 'bootstrap'; liebman.plants.PlantFeed$SpeciesList is in unnamed module of loader 'app')" type="java.lang.ClassCastException">java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class liebman.plants.PlantFeed$SpeciesList (java.util.ArrayList is in module java.base of loader 'bootstrap'; liebman.plants.PlantFeed$SpeciesList is in unnamed module of loader 'app')
-	at liebman.plants.PlantServiceTest.getPlant(PlantServiceTest.java:29)
+	at liebman.plants.PlantServiceTest.getSpecies(PlantServiceTest.java:29)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
