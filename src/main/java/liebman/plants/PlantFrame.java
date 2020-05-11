@@ -27,7 +27,6 @@ public class PlantFrame extends JFrame {
     public static JPanel lowerPanel;
     public static JLabel errorLabel;
 
-
     public PlantFrame() {
         setSize(800, 680);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -103,6 +102,5 @@ public class PlantFrame extends JFrame {
     public static void main(String[] args) {
         new PlantFrame().setVisible(true);
     }
-
 }
 

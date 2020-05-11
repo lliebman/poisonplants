@@ -67,7 +67,6 @@ public class PlantController {
                     PlantFrame.errorLabel.setText("An error ocurred. " + plantName + " not found.");
                     PlantFrame.errorLabel.setForeground(Color.RED);
                 }
-
             }
 
             @Override
