@@ -17,15 +17,18 @@ public class PlantFeed {
         String completeData;
     }
 
-    class SpeciesList extends ArrayList<Species> {
-    }
 
     //feed returned from getPlantInfo
     @SerializedName("common_name")
     String commonName;
-    Specifications specitifcation;
     ArrayList<Images> images;
-    Growth growth;
+    @SerializedName("main_species")
+    MainSpecies mainSpecies;
+
+    class MainSpecies {
+        Growth growth;
+        Specifications specifications;
+    }
 
     class Specifications
     {
@@ -53,7 +56,8 @@ public class PlantFeed {
 
     class TempMin
     {
-        int deg_f;
+        @SerializedName("deg_f")
+        int degF;
     }
 
 
