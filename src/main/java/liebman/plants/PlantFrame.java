@@ -13,19 +13,19 @@ public class PlantFrame extends JFrame {
     private JTextField answerField;
     private JButton checkButton;
 
-    public static JPanel centerPanel;
-    public static JLabel nameLabel;
-    public static JLabel toxicityLabel;
-    public static ImageIcon icon;
-    public static JLabel image;
-    public static JLabel growthFormLabel;
-    public static JLabel growthPeriodLabel;
-    public static JLabel droughtToleranceLabel;
-    public static JLabel shadeToleranceLabel;
-    public static JLabel degFLabel;
+    private final JLabel image;
 
-    public static JPanel lowerPanel;
-    public static JLabel errorLabel;
+    private final JPanel centerPanel;
+    private final JLabel nameLabel;
+    private final JLabel toxicityLabel;
+    private final JLabel growthFormLabel;
+    private final JLabel growthPeriodLabel;
+    private final JLabel droughtToleranceLabel;
+    private final JLabel shadeToleranceLabel;
+    private final JLabel degFLabel;
+
+    private final JPanel lowerPanel;
+    private final JLabel errorLabel;
 
     public PlantFrame() {
         setSize(800, 680);
@@ -57,12 +57,13 @@ public class PlantFrame extends JFrame {
         upperPanel.add(answerField);
         upperPanel.add(checkButton);
 
+        image = new JLabel();
+
         centerPanel = new JPanel();
-        centerPanel.setLayout(new GridLayout(8, 1));
+        centerPanel.setLayout(new GridLayout(7, 1));
 
         nameLabel = new JLabel("", SwingConstants.CENTER);
         toxicityLabel = new JLabel("", SwingConstants.CENTER);
-        image = new JLabel(icon, SwingConstants.CENTER);
         growthFormLabel = new JLabel("", SwingConstants.CENTER);
         growthPeriodLabel = new JLabel("", SwingConstants.CENTER);
         droughtToleranceLabel = new JLabel("", SwingConstants.CENTER);
@@ -82,8 +83,8 @@ public class PlantFrame extends JFrame {
         lowerPanel.setLayout(new FlowLayout());
 
         errorLabel = new JLabel();
-        lowerPanel.add(errorLabel);
 
+        add(image, BorderLayout.LINE_START);
         add(upperPanel, BorderLayout.PAGE_START);
         add(centerPanel, BorderLayout.CENTER);
         add(lowerPanel, BorderLayout.PAGE_END);
@@ -95,7 +96,8 @@ public class PlantFrame extends JFrame {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         PlantService service = retrofit.create(PlantService.class);
-        PlantController controller = new PlantController(service);
+        PlantController controller = new PlantController(service, image, nameLabel, toxicityLabel, growthFormLabel,
+                growthPeriodLabel, droughtToleranceLabel, shadeToleranceLabel, degFLabel, errorLabel);
         controller.requestData(answerField.getText());
     }
 

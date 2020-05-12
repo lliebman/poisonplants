@@ -13,10 +13,31 @@ import java.util.List;
 public class PlantController {
 
     private PlantService service;
+    private JLabel imageLabel;
+    private JLabel nameLabel;
+    private JLabel toxicityLabel;
+    private JLabel growthFormLabel;
+    private JLabel growthPeriodLabel;
+    private JLabel droughtToleranceLabel;
+    private JLabel shadeToleranceLabel;
+    private JLabel degFLabel;
+    private JLabel errorLabel;
 
-    public PlantController(PlantService service) {
+    public PlantController(PlantService service, JLabel image, JLabel nameLabel, JLabel toxicityLabel,
+                           JLabel growthFormLabel, JLabel growthPeriodLabel, JLabel droughtToleranceLabel, JLabel
+                                   shadeToleranceLabel, JLabel degFLabel, JLabel errorLabel) {
         this.service = service;
+        this.imageLabel = image;
+        this.nameLabel = nameLabel;
+        this.toxicityLabel = toxicityLabel;
+        this.growthFormLabel = growthFormLabel;
+        this.growthPeriodLabel = growthPeriodLabel;
+        this.droughtToleranceLabel = droughtToleranceLabel;
+        this.shadeToleranceLabel = shadeToleranceLabel;
+        this.degFLabel = degFLabel;
+        this.errorLabel = errorLabel;
     }
+
 
    public void requestData(String plantName) {
         service.getSpecies(plantName).enqueue(new Callback<List<PlantFeed.Species>>() {
@@ -29,51 +50,52 @@ public class PlantController {
                         @Override
                         public void onResponse(Call<PlantFeed> call, Response<PlantFeed> response) {
                             try{
-                                PlantFrame.errorLabel.setText("");
+                                errorLabel.setText("");
 
                                 PlantFeed plant = response.body();
                                 PlantFeed.Specifications specializations = response.body().mainSpecies.specifications;
                                 PlantFeed.Growth growth = response.body().mainSpecies.growth;
 
-                                PlantFrame.nameLabel.setText("Common Name: " + String.valueOf(plant.commonName));
-                                PlantFrame.toxicityLabel.setText("Toxicity Level: " + String.valueOf(specializations.toxicity));
+                                nameLabel.setText("Common Name: " + String.valueOf(plant.commonName));
+                                toxicityLabel.setText("Toxicity Level: " + String.valueOf(specializations.toxicity));
+                                toxicityLabel.setBackground(Color.YELLOW);
 
                                 URL url = new URL(plant.images.get(0).url);
                                 Image image = ImageIO.read(url);
-                                image = image.getScaledInstance(100,100, 1);
-                                PlantFrame.image.setIcon(new ImageIcon(image));
+                                image = image.getScaledInstance(400,400, Image.SCALE_SMOOTH);
+                                imageLabel.setIcon(new ImageIcon(image));
 
-                                PlantFrame.growthFormLabel.setText("Growth Form: " + String.valueOf(specializations.growthForm));
-                                PlantFrame.growthPeriodLabel.setText("Growth Period: " + String.valueOf(specializations.growthPeriod));
-                                PlantFrame.degFLabel.setText("Min temperature preferred: " + String.valueOf(growth.tempMin.degF) + " F");
-                                PlantFrame.droughtToleranceLabel.setText("Drought Tolerance: " + String.valueOf(growth.droughtTolerance));
-                                PlantFrame.shadeToleranceLabel.setText("Shade Tolerance: " + String.valueOf(growth.shadeTolerance));
+                                growthFormLabel.setText("Growth Form: " + String.valueOf(specializations.growthForm));
+                                growthPeriodLabel.setText("Growth Period: " + String.valueOf(specializations.growthPeriod));
+                                degFLabel.setText("Min temperature survivable: " + String.valueOf(growth.tempMin.degF) + " F");
+                                droughtToleranceLabel.setText("Drought Tolerance: " + String.valueOf(growth.droughtTolerance));
+                                shadeToleranceLabel.setText("Shade Tolerance: " + String.valueOf(growth.shadeTolerance));
                             }
                             catch (Exception e){
-                                PlantFrame.errorLabel.setText("An error ocurred");
-                                PlantFrame.errorLabel.setForeground(Color.RED);
+                                errorLabel.setText("An error ocurred");
+                                errorLabel.setForeground(Color.RED);
                             }
                         }
 
                         @Override
                         public void onFailure(Call<PlantFeed> call, Throwable t) {
                             System.out.println("Failure in PlantController.getPlantInfo");
-                            PlantFrame.errorLabel.setText("An error ocurred. " + plantName + " not found.");
-                            PlantFrame.errorLabel.setForeground(Color.RED);
+                            errorLabel.setText("An error ocurred. " + plantName + " not found.");
+                            errorLabel.setForeground(Color.RED);
                         }
                     });
                 }
                 catch (Exception e){
-                    PlantFrame.errorLabel.setText("An error ocurred. " + plantName + " not found.");
-                    PlantFrame.errorLabel.setForeground(Color.RED);
+                    errorLabel.setText("An error ocurred. " + plantName + " not found.");
+                    errorLabel.setForeground(Color.RED);
                 }
             }
 
             @Override
             public void onFailure(Call<List<PlantFeed.Species>> call, Throwable t) {
                 System.out.println("Failure in PlantController.getSpecies");
-                PlantFrame.errorLabel.setText("An error ocurred. " + plantName + " not found.");
-                PlantFrame.errorLabel.setForeground(Color.RED);
+                errorLabel.setText("An error ocurred. " + plantName + " not found.");
+                errorLabel.setForeground(Color.RED);
             }
         });
 
